@@ -1,5 +1,7 @@
 package com.hf.helper;
 
-public class HFKeyValueHelper {
+import com.hf.itf.IHFKeyValueHelper;
+
+public class HFKeyValueHelper implements IHFKeyValueHelper{
 
 }

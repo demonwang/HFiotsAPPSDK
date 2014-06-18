@@ -1,4 +1,7 @@
 package com.hf.data;
+
+import android.content.Context;
+
 /**
  * 
  * @author demon
@@ -20,4 +23,5 @@ public class HFConfigration {
 	public static int 	 macTMsgPacketSize;
 	public static int 	 pulseInterval;
 	public static int 	 defautTimeout;
+	public static Context appContex; //
 }
