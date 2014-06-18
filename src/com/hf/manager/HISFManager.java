@@ -1,5 +1,7 @@
 package com.hf.manager;
 
-public class HISFManager {
+import com.hf.itf.IHFSFManager;
 
+public class HISFManager implements IHFSFManager{
+	
 }

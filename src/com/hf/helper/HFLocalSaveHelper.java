@@ -1,6 +1,7 @@
 package com.hf.helper;
 
 import com.hf.data.HFConfigration;
+import com.hf.itf.IHFMainUserDataHelper;
 import com.hf.itf.IHFRouterInfoHelper;
 
 import android.content.Context;
@@ -26,7 +27,7 @@ public class HFLocalSaveHelper  {
 	private static HFLocalSaveHelper me = null;
 	
 	private IHFRouterInfoHelper routerInfoHelper = null;
-	
+	private IHFMainUserDataHelper mainUserInfoHelper = null;
 	
 	
 	private boolean isfristRun = true;
@@ -43,7 +44,7 @@ public class HFLocalSaveHelper  {
 		return me;
 	}
 	
-	public void init(){
+	public HFLocalSaveHelper init(){
 		sp = HFConfigration.appContex.getSharedPreferences(APP_LOCAL_DATA_SP, Context.MODE_PRIVATE);
 		this.isfristRun = sp.getBoolean(FIRSTRUN, true);
 		this.isregisted = sp.getBoolean(REGISTED, false);
@@ -52,6 +53,8 @@ public class HFLocalSaveHelper  {
 		this.serverDomain = sp.getString(SERVDOMAIN, "www.iotworkshop.com");
 		this.localPort = sp.getInt(LOCALPORT, 38899);
 		this.routerInfoHelper = new HFRouterInfoHelper();
+		this.mainUserInfoHelper = new HFMainUserDataHelper();
+		return this;
 	}
 	
 	public IHFRouterInfoHelper getrouterInfoHelper(){
@@ -59,6 +62,13 @@ public class HFLocalSaveHelper  {
 			routerInfoHelper = new HFRouterInfoHelper();
 		}
 		return routerInfoHelper;
+	}
+	
+	public IHFMainUserDataHelper getMainUserInfoHelper(){
+		if(mainUserInfoHelper == null){
+			mainUserInfoHelper = new HFMainUserDataHelper();
+		}
+		return mainUserInfoHelper;
 	}
 
 	public boolean isIsfristRun() {

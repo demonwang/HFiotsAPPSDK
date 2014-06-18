@@ -1,5 +1,13 @@
 package com.hf.manager;
 
-public class HFModuleLocalManager {
+import com.hf.itf.IHFModuleLocalManager;
+
+public class HFModuleLocalManager implements IHFModuleLocalManager{
+
+	@Override
+	public void sendLocalBeatNow() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

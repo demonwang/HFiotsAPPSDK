@@ -17,6 +17,7 @@ public class HFMainUserDataHelper implements IHFMainUserDataHelper{
 	private final String PASSWORD = "PASSWORD";
 	private final String PHONE = "PHONE";
 	private final String EMAIL = "EMAIL";
+	private final String DEFAULTMODULE = "DEFAULTMODULE";
 	
 	public static final String KEYVALUE = "KEYVALUE";
 	public static final String SERVDATA = "SERVDATA";
@@ -27,7 +28,7 @@ public class HFMainUserDataHelper implements IHFMainUserDataHelper{
 	private String pswd;
 	private String phone;
 	private String email;
-	
+	private String defModule;
 	private IHFKeyValueHelper keyvalueHelper = null;
 	private IHFLocalModuleInfoHelper localModuleInfoHelper= null;
 	private IHFServerModuleInfoHelper serverModuleInfoHelper= null;
@@ -40,6 +41,7 @@ public class HFMainUserDataHelper implements IHFMainUserDataHelper{
 		this.pswd = sp.getString(PASSWORD, "");
 		this.phone = sp.getString(PHONE, "");
 		this.email = sp.getString(EMAIL, "");
+		this.defModule = sp.getString(DEFAULTMODULE, "");
 		this.keyvalueHelper = new HFKeyValueHelper();
 		this.localModuleInfoHelper = new HFLocalModuleInfoHelper();
 		this.serverModuleInfoHelper = new HFServerModuleInfoHelper();
@@ -89,19 +91,36 @@ public class HFMainUserDataHelper implements IHFMainUserDataHelper{
 		e.putString(EMAIL, email);
 		e.commit();
 	}
+	
+	
+	
+	public String getDefModule() {
+		return defModule;
+	}
+	public void setDefModule(String defModuleMac) {
+		this.defModule = defModuleMac;
+		Editor e = sp.edit();
+		e.putString(DEFAULTMODULE, defModuleMac);
+		e.commit();
+	}
 	public IHFKeyValueHelper getKeyvalueHelper() {
+		if(keyvalueHelper == null){
+			keyvalueHelper = new HFKeyValueHelper();
+		}
 		return keyvalueHelper;
 	}
 
 	public IHFLocalModuleInfoHelper getLocalModuleInfoHelper() {
+		if(localModuleInfoHelper == null){
+			localModuleInfoHelper = new HFLocalModuleInfoHelper();
+		}
 		return localModuleInfoHelper;
 	}
 
 	public IHFServerModuleInfoHelper getServerModuleInfoHelper() {
+		if(serverModuleInfoHelper == null){
+			serverModuleInfoHelper = new HFServerModuleInfoHelper();
+		}
 		return serverModuleInfoHelper;
-	}
-	public void setServerModuleInfoHelper(
-			IHFServerModuleInfoHelper serverModuleInfoHelper) {
-		this.serverModuleInfoHelper = serverModuleInfoHelper;
 	}
 }

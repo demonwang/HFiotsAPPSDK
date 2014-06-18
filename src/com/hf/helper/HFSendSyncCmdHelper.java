@@ -1,5 +1,7 @@
 package com.hf.helper;
 
-public class HFSendSyncCmdHelper {
+import com.hf.itf.IHFSendSyncCmdHelper;
+
+public class HFSendSyncCmdHelper implements IHFSendSyncCmdHelper{
 
 }

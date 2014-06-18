@@ -7,6 +7,8 @@ public class HFModuleException extends Exception{
 	public static final int ERR_RECV_CMD = -501;
 	public static final int ERR_HTTP_SEND_CMD = -502;
 	public static final int ERR_HTTP_RECV_CMD = -503;
+
+	public static final int ERR_AES = -504;
 	
 	public HFModuleException(int errorCode,String e){
 		super(e);

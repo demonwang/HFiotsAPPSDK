@@ -19,7 +19,6 @@ public class HttpProxy {
 			postUrl = new URL(HFConfigration.cloudServiceUrl);
 			HttpURLConnection connection = (HttpURLConnection) postUrl
 					.openConnection();
-
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setRequestMethod("POST");
